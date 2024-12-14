@@ -12,3 +12,8 @@ body {
 #movie-details {
     max-width: 300px;
 }
+
+#movie-poster {
+    width: 100%;
+    border-radius: 5px;
+}
