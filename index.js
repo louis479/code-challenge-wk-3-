@@ -57,7 +57,19 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('http://localhost:3000/films')
         .then((response) => response.json())
         .then((films) => {
-            
+            films.forEach((film) => {
+                const li = document.createElement('li');
+                li.textContent = film.title;
+                li.classList.add('film', 'item');
+
+                // Mark sold-out films
+                if (film.capacity - film.tickets_sold === 0) {
+                    li.classList.add('sold-out');
+                }
+
+                
+                filmsList.appendChild(li);
+            });
         })
         .catch((error) => console.error('Error fetching films:', error));
 });
