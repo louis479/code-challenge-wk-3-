@@ -29,13 +29,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     buyTicketButton.disabled = true;
                     buyTicketButton.textContent = "Sold Out";
                   }
-                   // Optionally, update the server with the new tickets_sold value (using PATCH)
+                   // update the server with the new tickets_sold value (using PATCH)
                    fetch(`http://localhost:3000/films/${film.id}`, {
                     method: 'PATCH',
                     headers: {
                       'Content-Type': 'application/json'
                     },
-                    
+                    body: JSON.stringify({
+                        tickets_sold: film.tickets_sold
+                      })
+                
+                    });
                  
                 
           }
