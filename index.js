@@ -11,6 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const availableTickets = document.getElementById('available-tickets');
         const buyTicketButton = document.getElementById('buy-ticket-button');
 
+        // Display movie details in the respective elements
+        poster.src = film.poster; // Set movie poster
+        title.textContent = film.title; // Set movie title
+        runtime.textContent = `Runtime: ${film.runtime} minutes`; // Set runtime
+        showtime.textContent = `Showtime: ${film.showtime}`; // Set showtime
+        availableTickets.textContent = `Available Tickets: ${film.capacity - film.tickets_sold}`; // Calculate and display available tickets
+  
         
       })
       .catch(error => console.error('Error fetching the first movie:', error));
