@@ -33,3 +33,7 @@ body {
     cursor: pointer;
     border-radius: 3px;
 }
+
+#films li:hover {
+    background-color: #e2e2e2;
+}
