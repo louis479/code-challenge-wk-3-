@@ -67,7 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     li.classList.add('sold-out');
                 }
 
-                
+                // Display movie details on click
+                li.addEventListener('click', () => {
+                    displayMovieDetails(film);
+                });
+
                 filmsList.appendChild(li);
             });
         })
