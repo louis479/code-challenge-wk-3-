@@ -21,6 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Handle "Buy Ticket" button click
         buyTicketButton.addEventListener('click', () => {
             if (film.capacity - film.tickets_sold > 0) {
+                // Update available tickets on frontend
+                film.tickets_sold += 1;
+                availableTickets.textContent = `Available Tickets: ${film.capacity - film.tickets_sold}`;
+                
                 
           }
           });
