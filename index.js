@@ -18,7 +18,12 @@ document.addEventListener('DOMContentLoaded', () => {
         showtime.textContent = `Showtime: ${film.showtime}`; // Set showtime
         availableTickets.textContent = `Available Tickets: ${film.capacity - film.tickets_sold}`; // Calculate and display available tickets
   
-        
+        // Handle "Buy Ticket" button click
+        buyTicketButton.addEventListener('click', () => {
+            if (film.capacity - film.tickets_sold > 0) {
+                
+          }
+          });
       })
       .catch(error => console.error('Error fetching the first movie:', error));
   });
