@@ -24,7 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Update available tickets on frontend
                 film.tickets_sold += 1;
                 availableTickets.textContent = `Available Tickets: ${film.capacity - film.tickets_sold}`;
-                
+                // Disable the button if no tickets are left
+                if (film.capacity - film.tickets_sold === 0) {
+                    buyTicketButton.disabled = true;
+                    buyTicketButton.textContent = "Sold Out";
+                  }
+        
+                 
                 
           }
           });
