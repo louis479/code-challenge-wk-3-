@@ -8,3 +8,7 @@ body {
     gap: 20px;
     padding: 20px;
 }
+
+#movie-details {
+    max-width: 300px;
+}
