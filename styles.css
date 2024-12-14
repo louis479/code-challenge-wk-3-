@@ -24,3 +24,12 @@ body {
     margin: 0;
     width: 200px;
 }
+
+#films li {
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    border-radius: 3px;
+}
