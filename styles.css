@@ -37,3 +37,8 @@ body {
 #films li:hover {
     background-color: #e2e2e2;
 }
+
+#films .sold-out {
+    background-color: #ffcccc;
+    cursor: not-allowed;
+}
