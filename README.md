@@ -1,113 +1,129 @@
-# code-challenge
-
 # Flatdango
 
-Flatdango is a web application for a movie theater that allows users to view movie details, select movies, purchase tickets, and manage ticket availability.
+Flatdango is a web application designed for a movie theater, allowing users to browse available films, view detailed information about each film, and purchase tickets. The app interacts with a JSON server that holds information about the movies, including their showtimes, available tickets, and more.
 
-## Table of Contents
-
-- [Features](#features)
-- [Setup](#setup)
-- [Usage](#usage)
-- [Technologies Used](#technologies-used)
-- [File Structure](#file-structure)
-- [JSON Server Data](#json-server-data)
-- [License](#license)
+---
 
 ## Features
 
-- **Display Movie Details**: Shows movie poster, title, runtime, showtime, and available tickets.
-- **List of Movies**: Displays a clickable list of movies.
-- **Purchase Tickets**: Updates ticket availability when a ticket is purchased.
-- **Sold-Out Indicator**: Marks sold-out movies and disables further ticket purchases.
+- **Movie List**: Displays a list of all available movies, including their titles and status (sold out or not).
+- **Movie Details**: Showcases detailed information about a selected movie, including:
+  - Poster
+  - Title
+  - Runtime
+  - Showtime
+  - Number of tickets available
+- **Buy Tickets**: Allows users to purchase tickets for a selected movie, with the ticket count updated dynamically.
+- **Sold-Out Indicator**: Movies with no available tickets are marked as sold out in the movie list.
+- **Persistent Changes**: Updates to ticket sales are sent to the server to ensure persistence.
 
-## Setup
-
-### Prerequisites
-
-- Install [Node.js](https://nodejs.org/) if not already installed.
-- Install JSON Server globally:
-
-```bash
-npm install -g json-server
-```
-
-### Installation
-
-1. Clone the repository:
-
-```bash
-git clone <repository_url>
-```
-
-2. Navigate to the project directory:
-
-```bash
-cd flatdango
-```
-
-3. Start the JSON Server:
-
-```bash
-json-server --watch db.json
-```
-
-4. Open `index.html` in your browser to view the application.
-
-## Usage
-
-1. Select a movie from the list to view its details.
-2. Click the "Buy Ticket" button to purchase a ticket for the selected movie.
-3. If all tickets are sold, the movie will be marked as "Sold Out," and further purchases will be disabled.
+---
 
 ## Technologies Used
 
+### Frontend
 - **HTML**: For structuring the content.
-- **CSS**: For styling the application.
-- **JavaScript**: For dynamic interactions and fetching data.
-- **JSON Server**: For simulating a backend API.
+- **CSS**: For styling the user interface.
+- **JavaScript**: For dynamic content updates and interaction with the JSON server.
+
+### Backend
+- **JSON Server**: Mock server to simulate a real backend for storing movie data.
+
+---
+
+## How It Works
+
+1. **Setup the JSON Server**
+   - The application uses a `db.json` file to store movie information.
+   - Run the following command to start the JSON server:
+     ```bash
+     json-server --watch db.json
+     ```
+   - The server will run on `http://localhost:3000/`.
+
+2. **Loading the Page**
+   - On page load, the app fetches movie data from `http://localhost:3000/films`.
+   - The first movie's details are displayed by default.
+
+3. **Interacting with the App**
+   - **View Movie Details**:
+     - Click on a movie title in the list to view its details.
+   - **Purchase Tickets**:
+     - Click the `Buy Ticket` button to reduce the number of available tickets.
+     - If tickets reach zero, the movie is marked as sold out.
+
+4. **Updating the Server**
+   - When tickets are purchased, the app sends a `PATCH` request to update the ticket count on the JSON server.
+
+---
 
 ## File Structure
 
-```plaintext
+```
 Flatdango/
-├── index.html       # The main HTML file
-├── styles.css       # The CSS file for styling
-├── index.js         # The JavaScript file for functionality
-├── db.json          # JSON Server data file
+├── index.html       # Main HTML file for the application
+├── styles.css       # CSS file for styling
+├── index.js         # JavaScript file for functionality
+└── db.json          # Mock database for movies
 ```
 
-## JSON Server Data
+---
 
-The `db.json` file contains a list of movies with the following structure:
+## Getting Started
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd Flatdango
+   ```
+
+2. Install JSON Server:
+   ```bash
+   npm install -g json-server
+   ```
+
+3. Start the JSON server:
+   ```bash
+   json-server --watch db.json
+   ```
+
+4. Open `index.html` in your browser to view the app.
+
+---
+
+## JSON Data Format
+
+The `db.json` file contains an array of films with the following structure:
 
 ```json
 {
-  "films": [
-    {
-      "id": "1",
-      "title": "The Giant Gila Monster",
-      "runtime": "108",
-      "capacity": 30,
-      "showtime": "04:00PM",
-      "tickets_sold": 27,
-      "description": "A giant lizard terrorizes a rural Texas community...",
-      "poster": "https://example.com/poster.jpg"
-    }
-  ]
+  "id": "1",
+  "title": "The Giant Gila Monster",
+  "runtime": "108",
+  "capacity": 30,
+  "showtime": "04:00PM",
+  "tickets_sold": 27,
+  "description": "A giant lizard terrorizes a rural Texas community...",
+  "poster": "https://example.com/poster.jpg"
 }
 ```
 
-### Key Fields
+### Fields:
+- `id`: Unique identifier for the movie
+- `title`: Title of the movie
+- `runtime`: Runtime in minutes
+- `capacity`: Total number of tickets available
+- `showtime`: Showtime of the movie
+- `tickets_sold`: Number of tickets already sold
+- `description`: Brief description of the movie
+- `poster`: URL of the movie poster
 
-- `id`: Unique identifier for the movie.
-- `title`: The name of the movie.
-- `runtime`: Duration of the movie in minutes.
-- `capacity`: Total number of tickets available.
-- `showtime`: The movie's showtime.
-- `tickets_sold`: Number of tickets already sold.
-- `poster`: URL for the movie poster.
+---
 
-## License
+## Notes
+- Ensure that the JSON server is running before using the app.
+- Any updates to the ticket count are persistent and reflected in the `db.json` file.
 
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+---
+
+Thank you for your time. Have a great day
